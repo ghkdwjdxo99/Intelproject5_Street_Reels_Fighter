@@ -1,5 +1,29 @@
-# Intelproject5
-인텔프로젝트5팀
+# Street_Reels_Fighter
+- 인텔 프로젝트 5팀
+- Street_Reels_Fighter는 릴스에서 유행하는 춤을 Pose Estimation과 아바타 렌더링으로 연습하고 대결할 수 있는 듀얼 모니터 기반 리듬 게임입니다.
+- 모니터 1 + 터치 디스플레이, STM32를 연동해 구현했습니다.
+- 최종 동작 버전 코드는 `gui/SRF_v2.0.6` 디렉터리에 정리되어 있습니다.
+
+## 프로젝트 요약
+- YOLOv8 Pose로 사용자와 레퍼런스 영상의 Keypoint를 추출하고, 관절 각도 기반 점수화 로직 구현
+- 추출한 Key Point는 아바타 파츠에 매핑되어 다양한 캐릭터 영상으로 변환
+- 듀얼 모니터 구성으로 `Control(터치 패널)`과 `View(무대 연출)`를 분리하여 사용자가 곡 선택과 세션 관리를 수행
+- STM32 + UART로 Pan 서보 모터를 제어하여 플레이어를 화면 중앙에 유지
+
+## 주요 기능
+- YOLOv8-Pose 기반 사용자/레퍼런스 Keypoint 추출 및 JSON 변환 (`merge_test/video_to_json.py`)
+- 관절 각도, 구간별 가중치, 정상화 로직으로 점수 산출 (`merge_test/pages/pose_score_app.py`)
+- QML + PyQt5 UI로 싱글/멀티 플레이, 곡 선택, 아바타 변환, 결과 화면 제공
+- STM32/터치 디스플레이와의 연동: 카메라 추적, UI 조작, 점수 피드백 애니메이션
+
+## 시스템 구성
+- **소프트웨어**
+  - Python + PyQt5 QML 런타임 (`gui/SRF_v2.0.6/main.py`)
+  - YOLOv8 Pose 모델(`merge_test/yolov8l-pose.pt`)과 Ultralytics 프레임워크
+  - OpenCV 기반 영상 입출력, Numpy 연산, PySerial을 통한 장치 통신
+- **하드웨어**
+  - STM32 보드 (Pan/Tilt 서보 모터 제어 및 상태 동기화)
+  - 듀얼 모니터(터치 패널 + 무대 화면), USB 카메라
 
 ## 👥 팀 구성 및 역할
 
@@ -28,33 +52,21 @@
 | `9.15 ~ 9.16`   | 캐릭터 모션 |
 | `9.17 ~ 9.18`   | PPT 작성 및 발표 준비 |
 
+## 디렉터리 가이드
+- `gui/SRF_v2.0.6/` : 최종 빌드용 PyQt5/QML 애플리케이션.
+- `gui/SRF_v2.0.6/resource/` : UI 영상, 이미지, 폰트, 샘플 레퍼런스 데이터.
+- `gui/SRF_v2.0.6/merge_test/` : 포즈 추론, 점수 계산, 아바타 렌더링 백엔드 로직.
+- `avatar/` : 캐릭터 에셋 및 리깅 자료.
+- `model/` : 머신러닝 모델 관련 부가 자료.
+- `stm32/` : 서보 제어용 펌웨어 및 회로 문서.
 
----
-
-# Street_Reels_Fighter
-
-## 프로젝트 목표
-릴스에서 유행하는 춤을 Pose Estimation을 통해 연습 및 대결할 수 있게 하는 기능을 제공하는 게임 시스템입니다.
-
-### 주요 기능
-- YOLOv8-Pose로 User / Reference video에서 Keypoint 추출
-- 추출한 Key Point로 관절 각도를 계산하여 유사도 / 점수 측정
-- Key Point - 아바타 파츠 매핑으로 아바타 영상 생성
-- STM32 + UART로 서보 모터 Pan (좌/중/우 추적)
-- 듀얼 모니터 : Control(조작) / View(무대) 분리
-
-
-### 트러블 슈팅
-1. Touch Display 터치 좌표 오류
-    - 문제 : Touch Display와 일반 Display를 동시 사용했을 때 터치 디스플레이에 터치되는 좌표 값이 정확하지 않음
-    - 원인 : 어떤 것이 Touch Display인지 알지 못하고 하나의 좌표 값으로 인식했기 때문
-    - 해결 : Xorg 기준으로 Touch Display를 특정 모니터에 매핑하여 정확한 좌표를 사용
-    - 명령 : xinput map-to-output <터치장치ID> <모니터이름> : ex) xinput map-to-output 12 HDMI-1
-
-2. 실행할 카메라 번호 오류
-    - 문제 : 카메라 케이블 재연결 후 프로그램 실행 시 입력 장치를 못 찾음
-    - 원인 : /dev/video0가 /dev/video1 등으로 장치 번호가 바뀜
-    - 해결 : 카메라 파일 번호 변경
+## 트러블 슈팅
+1. **터치 디스플레이 좌표값 오류**
+   - 원인: Xorg에서 터치 장치를 특정 모니터와 매핑하지 않아 좌표가 틀어짐.
+   - 해결: `xinput map-to-output <터치장치ID> <모니터이름>` 명령으로 터치 입력을 해당 디스플레이에 매핑.
+2. **카메라 장치 번호 변동**
+   - 원인: USB 재연결 시 `/dev/video0` → `/dev/video1` 등으로 번호가 변경됨.
+   - 해결: 실행 전에 `v4l2-ctl --list-devices`로 장치 번호 확인 후 설정값 반영.
 
 
 
@@ -79,18 +91,18 @@ https://github.com/user-attachments/assets/b6bfb8c5-b38f-4104-90f9-4563830ba4b2
 
 
 
-## 구성도
+### 구성도
 <img width="2560" height="1440" alt="image" src="https://github.com/user-attachments/assets/10bc5493-2cbd-427e-8ccc-1254b1499612" />
 
 
 
 
-## 흐름도
+### 흐름도
 <img width="2560" height="1440" alt="image" src="https://github.com/user-attachments/assets/88f75fc4-9132-4528-b9f9-8a906baca271" />
 
 
 
-## 팀 역할
+### 팀 역할
 <img width="2560" height="1440" alt="image" src="https://github.com/user-attachments/assets/43a84000-a948-4d23-b2fc-cde58099058e" />
 
 
