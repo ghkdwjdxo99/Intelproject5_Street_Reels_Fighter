@@ -8,7 +8,7 @@
 - YOLOv8 Pose로 사용자와 레퍼런스 영상의 Keypoint를 추출하고, 관절 각도 기반 점수화 로직 구현
 - 추출한 Key Point는 아바타 파츠에 매핑되어 다양한 캐릭터 영상으로 변환
 - 듀얼 모니터 구성으로 `Control(터치 패널)`과 `View(무대 연출)`를 분리하여 사용자가 곡 선택과 세션 관리를 수행
-- STM32 + UART로 Pan 서보 모터를 제어하여 플레이어를 화면 중앙에 유지
+- STM32로 서보 모터를 제어하여 Camera Pan을 제작, 플레이어를 화면 중앙에 유지
 
 ## 주요 기능
 - YOLOv8-Pose 기반 사용자/레퍼런스 Keypoint 추출 및 JSON 변환 (`merge_test/video_to_json.py`)
