@@ -92,36 +92,39 @@ https://github.com/user-attachments/assets/b6bfb8c5-b38f-4104-90f9-4563830ba4b2
 
 
 ### 구성도
-<img width="2560" height="1440" alt="image" src="https://github.com/user-attachments/assets/10bc5493-2cbd-427e-8ccc-1254b1499612" />
+<img width="1024" height="576" alt="1760004829751-bd3f46eb-a383-4e1d-af3e-f6ca164b6674s__7" src="https://github.com/user-attachments/assets/52dd25b5-48fd-4443-b5d2-4cfe3e99b203" />
 
 
 
 
 ### 흐름도
-<img width="2560" height="1440" alt="image" src="https://github.com/user-attachments/assets/88f75fc4-9132-4528-b9f9-8a906baca271" />
+<img width="1024" height="576" alt="1760004829751-bd3f46eb-a383-4e1d-af3e-f6ca164b6674s__6" src="https://github.com/user-attachments/assets/b45c3f6c-c244-4306-9b81-e2f6b8539430" />
+
 
 
 
 ### 팀 역할
-<img width="2560" height="1440" alt="image" src="https://github.com/user-attachments/assets/43a84000-a948-4d23-b2fc-cde58099058e" />
+<img width="1024" height="576" alt="1760004829751-bd3f46eb-a383-4e1d-af3e-f6ca164b6674s__3" src="https://github.com/user-attachments/assets/a0a3c9e2-ab69-4ae0-97f2-6eece86fe663" />
 
 
 
-### Key Point 추출
-<img width="878" height="936" alt="image" src="https://github.com/user-attachments/assets/ea55223d-63bd-49b0-9c76-c5e92dbff430" />
+
+### Key Point 추출 및 관절 각도 계산
+<img width="1024" height="576" alt="1760004829751-bd3f46eb-a383-4e1d-af3e-f6ca164b6674s__11" src="https://github.com/user-attachments/assets/b193eeaa-d202-4510-b789-6eb295f617e6" />
 
 
-### 관절 각도 계산
-<img width="1431" height="926" alt="image" src="https://github.com/user-attachments/assets/f5e19040-a71d-4c29-85e4-006b205297dc" />
 
 
 ### 아바타 생성
-<img width="2560" height="1440" alt="image" src="https://github.com/user-attachments/assets/8aa3ff1c-1142-47d3-ad26-6116e9ac6e31" />
+<img width="1024" height="576" alt="1760004829751-bd3f46eb-a383-4e1d-af3e-f6ca164b6674s__14" src="https://github.com/user-attachments/assets/d0bb7575-6441-48f4-b940-0f82c6db7def" />
+
 
 
 ### 카메라 Pan (STM32)
-<img width="2560" height="1440" alt="image" src="https://github.com/user-attachments/assets/b994d77f-d89b-4535-a556-3a9f32b39cfb" />
-<img width="2560" height="1440" alt="image" src="https://github.com/user-attachments/assets/5e236b3a-aa04-439d-9fdc-c2151ecf3bc1" />
+<img width="1024" height="576" alt="1760004829751-bd3f46eb-a383-4e1d-af3e-f6ca164b6674s__15" src="https://github.com/user-attachments/assets/625835d7-12e3-4a55-aa15-ad43ba97afa1" />
+<img width="1024" height="576" alt="1760004829751-bd3f46eb-a383-4e1d-af3e-f6ca164b6674s__16" src="https://github.com/user-attachments/assets/6bf378c0-9611-4e08-a875-8b410f49ef50" />
+
+
 
 
 
